@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit form</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/css/styleLg.css" />
+    {{ bootstrap.load_css() }}
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Buku</h1>
+        <div class="row">
+            <div class="col-sm-12 col-md-8">
+                <form method="POST" action="{{ url_for('edit') }}" enctype="multipart/form-data">
+                    {{ form.csrf_token }}
+                    <input hidden="hidden" name="id" value="{{book.id}}">
+                    <div class="form-group">
+                        {{ form.judul.label(class="form-control-label") }} <br> {{ form.judul(class="form-control mt-2") }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.penulis.label(class="form-control-label mt-2") }} <br> {{ form.penulis(class="form-control mt-2") }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.halaman.label(class="form-control-label mt-2") }} <br> {{ form.halaman(class="form-control mt-2") }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.genre.label(class="form-control-label mt-2") }} <br> {{ form.genre(class="form-control mt-2") }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.deskripsi.label(class="form-control-label mt-2") }} <br> {{ form.deskripsi(class="form-control mt-2") }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.file.label(class="form-control-label mt-2") }} <br> {{ form.file(class="form-control-file mt-2") }}
+                    </div>
+                    {{ form.submit(class="btn btn-primary mt-2") }}
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {{ bootstrap.load_js() }}
+</body>
+</html>
